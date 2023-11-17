@@ -1,0 +1,97 @@
+﻿<Window x:Class="CalcClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalcClient"
+        mc:Ignorable="d"
+        Title="Calculator" Height="250" Width="300">
+    <Window.DataContext>
+        <local:ViewModel></local:ViewModel>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.ColumnSpan="2"
+                 HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 FontSize="20"
+                 FontWeight="Bold"
+                 Text="{Binding Left,UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Grid.Column="2"
+                 BorderThickness="1"
+                 BorderBrush="Black"
+                 HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 FontSize="20"
+                 FontWeight="Bold"
+                 Content="{Binding Command,UpdateSourceTrigger=PropertyChanged}"
+                 />
+        <TextBox  
+                 Grid.Column="3"
+                 Grid.ColumnSpan="2"
+                 HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 FontSize="20"
+                 FontWeight="Bold"
+                 Text="{Binding Right,UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Grid.Row="1"
+                       HorizontalContentAlignment="Center"
+               FontSize="20"
+               FontWeight="Bold"
+                      Content="+"
+                      Command="{Binding CalcCommandClick,UpdateSourceTrigger=PropertyChanged}"
+                      CommandParameter="+"/>
+        <Button Grid.Row="1" Grid.Column="1"
+                       HorizontalContentAlignment="Center"
+               FontSize="20"
+               FontWeight="Bold" 
+                      Content="-"
+                      Command="{Binding CalcCommandClick,UpdateSourceTrigger=PropertyChanged}"
+                      CommandParameter="-"/>
+        <Button Grid.Row="1" Grid.Column="2"
+                       HorizontalContentAlignment="Center"
+               FontSize="20"
+               FontWeight="Bold"
+                      Content="*"
+                      Command="{Binding CalcCommandClick,UpdateSourceTrigger=PropertyChanged}"
+                      CommandParameter="*"/>
+        <Button Grid.Row="1" Grid.Column="3"
+                       HorizontalContentAlignment="Center"
+               FontSize="20"
+               FontWeight="Bold"
+                      Content="/"
+                      Command="{Binding CalcCommandClick,UpdateSourceTrigger=PropertyChanged}"
+                      CommandParameter="/"/>
+        <Button Grid.Row="1" Grid.Column="4"
+                       HorizontalContentAlignment="Center"
+               FontSize="20"
+               FontWeight="Bold"
+                      Content="^"
+                      Command="{Binding CalcCommandClick,UpdateSourceTrigger=PropertyChanged}"
+                      CommandParameter="^"/>
+        <Label Grid.Row="2"
+               Grid.ColumnSpan="5"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+               FontSize="20"
+               FontWeight="Bold"
+               Content="{Binding Result}"/>
+        <Button Grid.Row="3"  Grid.ColumnSpan="5"
+                 HorizontalContentAlignment="Center"
+               FontSize="20"
+               FontWeight="Bold" Content="="
+                Command="{Binding ResultCommand,UpdateSourceTrigger=PropertyChanged}"/>
+    </Grid>
+</Window>
